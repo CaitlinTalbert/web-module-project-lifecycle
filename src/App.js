@@ -3,6 +3,8 @@ import User from './components/User';
 import FollowerList from './components/FollowerList';
 import axios from 'axios'; 
 
+import './index.css';
+
 
 class App extends React.Component {
   state = {
@@ -54,14 +56,15 @@ handleSearch = (e) => {
 }
 
   render() {
-    return(<div>
+    return(<div className="App">
       <h1>GitHub Info</h1>
       <form>
         <input placeholder="GitHub Handle" onChange={this.handleChange}/>
         <button onClick={this.handleSearch}>Search</button>
       </form>
-
+      <div className="userInfo">
       <User user={this.state.user}/>
+      </div>
       <FollowerList followers={this.state.followers}/>
     </div>);
    }
