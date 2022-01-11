@@ -35,12 +35,30 @@ componentDidUpdate (prevProps, prevState) {
   }
 }
 
+handleChange = (e) => {
+  this.setState({
+    ...this.state, 
+    currentUser: e.target.value
+  });
+}
+
+handleSearch = (e) => {
+  e.preventDefault(); 
+  axios.get(`https://api.github.com/users/${this.state.currentUser}`)
+  .then(resp => {
+    this.setState({
+      ...this.state, 
+      user: resp.data
+    }); 
+  }); 
+}
+
   render() {
     return(<div>
       <h1>GitHub Info</h1>
       <form>
-        <input placeholder="GitHub Handle"/>
-        <button>Search</button>
+        <input placeholder="GitHub Handle" onChange={this.handleChange}/>
+        <button onClick={this.handleSearch}>Search</button>
       </form>
 
       <User user={this.state.user}/>

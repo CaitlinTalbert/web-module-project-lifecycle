@@ -5,7 +5,7 @@ class User extends React.Component {
         const { user } = this.props; 
         return(
             <div id="userCard">
-                <img src={user.avatar_url}/>
+                <img width="300px" src={user.avatar_url}/>
                 <a href={user.html_url}><h3>{user.name}</h3></a>
                 <p>{user.login}</p>
                 <p>Total Repositories: {user.public_repos}</p>
